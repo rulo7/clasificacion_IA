@@ -1,15 +1,16 @@
 
-import Jama.Matrix;
+import model.Bayes;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        double[][] matrix = {{2, 0, 1}, {1, 1, -4}, {3, 7, -3}};
-        Matrix m = new Matrix(matrix);
-
-        m.inverse().print(1, 2);
         /*
+         double[][] matrix = {{2, 0, 1}, {1, 1, -4}, {3, 7, -3}};
+         Matrix m = new Matrix(matrix);
+
+         m.inverse().print(1, 2);
+        
          double[][] x = {{1, 2}, {3, 4}};
          double[][] y = {{4, 3}, {1, 2}};
 
@@ -54,5 +55,12 @@ public class Main {
          System.out.println("Despues:");
          System.out.println(Reader.leerFichero("prueba.txt"));
          */
+        Bayes b = new Bayes(2);
+        b.aprender("prueba.txt");
+        System.out.println(b.printMuestras("coche"));
+        double[] muestra = {2.0, 3.25};
+
+        System.out.println(b.gradoDePertenencia(muestra, "coche"));
+
     }
 }
